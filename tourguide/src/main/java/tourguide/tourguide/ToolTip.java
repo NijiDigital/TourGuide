@@ -1,6 +1,7 @@
 package tourguide.tourguide;
 
 import android.support.annotation.DrawableRes;
+import android.support.annotation.StringRes;
 import android.view.Gravity;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -11,7 +12,7 @@ import android.view.animation.BounceInterpolator;
  * Created by tanjunrong on 6/17/15.
  */
 public class ToolTip {
-    public String mDescription;
+    @StringRes public int mDescription;
     @DrawableRes public int mLeftDrawableRes, mRightDrawableRes;
     @DrawableRes public int mBackgroundColor, mTextColor;
     public String mTypeface;
@@ -22,7 +23,6 @@ public class ToolTip {
 
     public ToolTip() {
         /* default values */
-        mDescription = "";
         mTextColor = android.R.color.white;
         mBackgroundColor = android.R.color.transparent;
         mEnterAnimation = new AlphaAnimation(0f, 1f);
@@ -41,7 +41,7 @@ public class ToolTip {
      * @param description
      * @return return ToolTip instance for chaining purpose
      */
-    public ToolTip setDescription(String description) {
+    public ToolTip setDescription(@StringRes int description) {
         mDescription = description;
         return this;
     }

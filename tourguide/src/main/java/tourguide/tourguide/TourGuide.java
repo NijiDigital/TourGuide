@@ -296,9 +296,10 @@ public class TourGuide {
 
             mToolTipViewGroup.setBackgroundResource(mToolTip.mBackgroundColor);
 
-            if (mToolTip.mDescription == null) {
+            if (mToolTip.mDescription == 0) {
                 descriptionView.setVisibility(View.GONE);
             } else {
+                descriptionView.setVisibility(View.VISIBLE);
                 descriptionView.setText(mToolTip.mDescription);
             }
             mToolTipViewGroup.startAnimation(mToolTip.mEnterAnimation);
