@@ -201,7 +201,6 @@ public class TourGuideDemoMain extends ActionBarActivity {
                     @Override
                     public void onClick(View v) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
-                        builder.setTitle("Button Tour").setMessage("- Button Tour example shows a sequence of TourGuide running on different buttons. \n- The method of proceeding to the next TourGuide is to press on the button itself. \n- This is suitable when you actually want the user to click on the button during the Tour.\n");
                         builder.create().show();
                     }
                 });
@@ -223,7 +222,6 @@ public class TourGuideDemoMain extends ActionBarActivity {
                     @Override
                     public void onClick(View v) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
-                        builder.setTitle("Overlay Tour").setMessage("- Overlay Tour example shows a sequence of TourGuide running on different buttons. \n- The method of proceeding to the next TourGuide is to click on the Overlay instead of the button itself. \n- This is suitable when you just want to explain the usage of each buttons, but don't actually want the user to click on them.\n- This example also shows how to use the Sequence class to do a series of TourGuide, while the outcome looks the same as Button Tour, the code is more readable.");
                         builder.create().show();
                     }
                 });

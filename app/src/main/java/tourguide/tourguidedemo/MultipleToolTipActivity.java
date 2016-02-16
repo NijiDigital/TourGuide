@@ -7,6 +7,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 
+import tourguide.tourguide.Overlay;
 import tourguide.tourguide.Pointer;
 import tourguide.tourguide.ToolTip;
 import tourguide.tourguide.TourGuide;
@@ -26,34 +27,36 @@ public class MultipleToolTipActivity extends ActionBarActivity {
 
         setContentView(R.layout.activity_multiple_tooltip);
 
-        Button button = (Button)findViewById(R.id.button);
-        Button button2 = (Button)findViewById(R.id.button2);
+        Button button = (Button) findViewById(R.id.button);
+        Button button2 = (Button) findViewById(R.id.button2);
 
         // the return handler is used to manipulate the cleanup of all the tutorial elements
         mTutorialHandler = TourGuide.init(this).with(TourGuide.Technique.Click)
                 .setPointer(new Pointer())
                 .setToolTip(new ToolTip()
-                            .setTitle("Hey!")
-                            .setDescription("I'm the top guy")
-                            .setGravity(Gravity.RIGHT))
+                        .setDescription("I'm the top guy")
+                        .setGravity(Gravity.RIGHT))
                 .setOverlay(null)
                 .playOn(button);
         mTutorialHandler2 = TourGuide.init(mActivity).with(TourGuide.Technique.Click)
-                .setPointer(new Pointer())
                 .setToolTip(new ToolTip()
-                            .setTitle("Hey!")
-                            .setDescription("I'm the bottom guy")
-                            .setGravity(Gravity.TOP|Gravity.LEFT))
-                .setOverlay(null)
+                        .setDescription("I'm the bottom guy \n Too strong for you")
+                        .setTextColor(android.R.color.holo_red_dark)
+                        .setRightDrawable(R.drawable.help_arrow_right_bottom)
+                        .setGravity(Gravity.TOP | Gravity.CENTER))
+
+                .setOverlay(new Overlay()
+                        .disableClick(true)
+                        .setStyle(Overlay.Style.Rectangle))
                 .playOn(button2);
 
-        button.setOnClickListener(new View.OnClickListener(){
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mTutorialHandler.cleanUp();
-                           }
+            }
         });
-        button2.setOnClickListener(new View.OnClickListener(){
+        button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mTutorialHandler2.cleanUp();

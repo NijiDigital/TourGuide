@@ -39,7 +39,7 @@ public class ToolTipCustomizationActivity extends ActionBarActivity {
         animation.setInterpolator(new BounceInterpolator());
 
         ToolTip toolTip = new ToolTip()
-                            .setTitle("Next Button")
+
                             .setDescription("Click on Next button to proceed...")
                             .setTextColor(Color.parseColor("#bdc3c7"))
                             .setBackgroundColor(Color.parseColor("#e74c3c"))

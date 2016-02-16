@@ -28,7 +28,7 @@ public class NoPointerActivity extends ActionBarActivity {
         Button button = (Button)findViewById(R.id.button);
 
         ToolTip toolTip = new ToolTip().
-                setTitle("Welcome!").
+
                 setDescription("Click on Get Started to begin...");
 
         // the return handler is used to manipulate the cleanup of all the tutorial elements

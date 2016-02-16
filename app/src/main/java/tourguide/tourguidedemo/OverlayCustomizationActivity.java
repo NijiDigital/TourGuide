@@ -31,7 +31,7 @@ public class OverlayCustomizationActivity extends ActionBarActivity {
         Button next_button = (Button)findViewById(R.id.next_button);
 
         ToolTip toolTip = new ToolTip().
-                setTitle("Hello!").
+
                 setDescription("Click to view tutorial. Next button is disabled until tutorial is viewed");
 
         Overlay overlay = new Overlay()

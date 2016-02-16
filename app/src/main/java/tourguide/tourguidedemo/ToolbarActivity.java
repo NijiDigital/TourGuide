@@ -59,7 +59,7 @@ public class ToolbarActivity extends ActionBarActivity {
         button.setImageDrawable(mActivity.getResources().getDrawable(android.R.drawable.ic_dialog_email));
 
         ToolTip toolTip = new ToolTip()
-                            .setTitle("Welcome!")
+
                             .setDescription("Click on Get Started to begin...")
                             .setGravity(Gravity.LEFT|Gravity.BOTTOM);
 

@@ -35,7 +35,6 @@ public class BasicActivity extends ActionBarActivity {
         Button button = (Button)findViewById(R.id.button);
 
         ToolTip toolTip = new ToolTip().
-                setTitle("Welcome!").
                 setDescription("Click on Get Started to begin...");
 
         // Setup pointer for demo

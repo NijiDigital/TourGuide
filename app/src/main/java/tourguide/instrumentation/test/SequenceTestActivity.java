@@ -101,14 +101,14 @@ public class SequenceTestActivity extends ActionBarActivity {
         // the return handler is used to manipulate the cleanup of all the tutorial elements
         TourGuide mTG1 = TourGuide.init(this)
                 .setToolTip(new ToolTip()
-                        .setTitle("Hey!")
+
                         .setDescription("I'm the top fellow")
                         .setGravity(Gravity.RIGHT))
                 .playLater(button);
 
         TourGuide mTG2 = TourGuide.init(this)
                 .setToolTip(new ToolTip()
-                        .setTitle("Hey!")
+
                         .setDescription("Just the middle man")
                         .setGravity(Gravity.BOTTOM | Gravity.LEFT))
                 .setOverlay(new Overlay()
@@ -124,7 +124,7 @@ public class SequenceTestActivity extends ActionBarActivity {
 
         TourGuide mTG3 = TourGuide.init(this)
                 .setToolTip(new ToolTip()
-                        .setTitle("Hey!")
+
                         .setDescription("It's time to say goodbye")
                         .setGravity(Gravity.TOP | Gravity.RIGHT))
                 .playLater(button3);
@@ -153,14 +153,14 @@ public class SequenceTestActivity extends ActionBarActivity {
         // the return handler is used to manipulate the cleanup of all the tutorial elements
         TourGuide mTG1 = TourGuide.init(this)
                 .setToolTip(new ToolTip()
-                        .setTitle("Hey!")
+
                         .setDescription("I'm the top fellow")
                         .setGravity(Gravity.RIGHT))
                 .playLater(button);
 
         TourGuide mTG2 = TourGuide.init(this)
                 .setToolTip(new ToolTip()
-                        .setTitle("Hey!")
+
                         .setDescription("Just the middle man")
                         .setGravity(Gravity.BOTTOM | Gravity.LEFT))
                 .setOverlay(new Overlay()
@@ -169,7 +169,7 @@ public class SequenceTestActivity extends ActionBarActivity {
 
         TourGuide mTG3 = TourGuide.init(this)
                 .setToolTip(new ToolTip()
-                        .setTitle("Hey!")
+
                         .setDescription("It's time to say goodbye")
                         .setGravity(Gravity.TOP | Gravity.RIGHT))
                 .playLater(button3);

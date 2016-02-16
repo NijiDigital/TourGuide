@@ -79,7 +79,7 @@ public class OverlaySequenceTourActivity extends ActionBarActivity {
         // the return handler is used to manipulate the cleanup of all the tutorial elements
         TourGuide tourGuide1 = TourGuide.init(this)
                                .setToolTip(new ToolTip()
-                                               .setTitle("ContinueMethod.Overlay")
+
                                                .setDescription("When using this ContinueMethod, you can't specify the additional action before going to next TourGuide.")
                                                .setGravity(Gravity.BOTTOM)
                                           )
@@ -88,7 +88,7 @@ public class OverlaySequenceTourActivity extends ActionBarActivity {
 
         TourGuide tourGuide2 = TourGuide.init(this)
                                .setToolTip(new ToolTip()
-                                               .setTitle("Tip")
+
                                                .setDescription("Individual Overlay will be used when it's supplied.")
                                                .setGravity(Gravity.BOTTOM | Gravity.LEFT)
                                                .setBackgroundColor(Color.parseColor("#c0392b"))
@@ -102,7 +102,7 @@ public class OverlaySequenceTourActivity extends ActionBarActivity {
 
         TourGuide tourGuide3 = TourGuide.init(this)
                                .setToolTip(new ToolTip()
-                                               .setTitle("ContinueMethod.Overlay")
+
                                                .setDescription("When using this ContinueMethod, you don't need to call tourGuide.next() explicitly, TourGuide will do it for you.")
                                                .setGravity(Gravity.TOP)
                                           )
@@ -127,7 +127,7 @@ public class OverlaySequenceTourActivity extends ActionBarActivity {
         // the return handler is used to manipulate the cleanup of all the tutorial elements
         TourGuide tourGuide1 = TourGuide.init(this)
                                .setToolTip(new ToolTip()
-                                               .setTitle("ContinueMethod.OverlayListener")
+
                                                .setDescription("When using OverlayListener, you can add more actions before proceeding to next TourGuide, such as showing a Toast message.")
                                                .setGravity(Gravity.BOTTOM)
                                           )
@@ -136,7 +136,7 @@ public class OverlaySequenceTourActivity extends ActionBarActivity {
 
         TourGuide tourGuide2 = TourGuide.init(this)
                                .setToolTip(new ToolTip()
-                                               .setTitle("Tip")
+
                                                .setDescription("Individual Overlay will be used when it's supplied.")
                                                .setBackgroundColor(Color.parseColor("#c0392b"))
                                                .setGravity(Gravity.BOTTOM | Gravity.LEFT)
@@ -156,7 +156,7 @@ public class OverlaySequenceTourActivity extends ActionBarActivity {
 
         TourGuide tourGuide3 = TourGuide.init(this)
                                .setToolTip(new ToolTip()
-                                               .setTitle("ContinueMethod.OverlayListener")
+
                                                .setDescription("When using this ContinueMethod, you need to call tourGuide.next() explicitly.")
                                                .setGravity(Gravity.TOP)
                                )

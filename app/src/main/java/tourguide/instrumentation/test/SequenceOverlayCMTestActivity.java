@@ -68,7 +68,7 @@ public class SequenceOverlayCMTestActivity extends ActionBarActivity {
         // the return handler is used to manipulate the cleanup of all the tutorial elements
         mOverlayTG1 = TourGuide.init(this)
                                .setToolTip(new ToolTip()
-                                               .setTitle(TEST_TITLE1)
+
                                                .setDescription("1")
                                                .setGravity(Gravity.BOTTOM)
                                )
@@ -77,7 +77,7 @@ public class SequenceOverlayCMTestActivity extends ActionBarActivity {
         Log.d("ddw","mOverlayTG1.getOverlay(): "+mOverlayTG1.getOverlay());
         mOverlayTG2 = TourGuide.init(this)
                 .setToolTip(new ToolTip()
-                                .setTitle(TEST_TITLE2)
+
                                 .setDescription("2")
                                 .setGravity(Gravity.BOTTOM | Gravity.LEFT)
                                 .setBackgroundColor(Color.parseColor("#c0392b"))
@@ -91,7 +91,7 @@ public class SequenceOverlayCMTestActivity extends ActionBarActivity {
 
         mOverlayTG3 = TourGuide.init(this)
                                .setToolTip(new ToolTip()
-                                               .setTitle(TEST_TITLE3)
+
                                                .setDescription("3")
                                                .setGravity(Gravity.TOP)
                                )

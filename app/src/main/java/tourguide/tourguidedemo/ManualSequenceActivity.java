@@ -28,9 +28,9 @@ public class ManualSequenceActivity extends ActionBarActivity {
         setContentView(R.layout.activity_in_sequence);
 
         /* Get 3 buttons from layout */
-        Button button = (Button)findViewById(R.id.button);
-        final Button button2 = (Button)findViewById(R.id.button2);
-        final Button button3 = (Button)findViewById(R.id.button3);
+        Button button = (Button) findViewById(R.id.button);
+        final Button button2 = (Button) findViewById(R.id.button2);
+        final Button button3 = (Button) findViewById(R.id.button3);
 
         /* setup enter and exit animation */
         Animation enterAnimation = new AlphaAnimation(0f, 1f);
@@ -43,37 +43,35 @@ public class ManualSequenceActivity extends ActionBarActivity {
 
         /* initialize TourGuide without playOn() */
         mTutorialHandler = TourGuide.init(this).with(TourGuide.Technique.Click)
-                           .setPointer(new Pointer())
-                           .setToolTip(new ToolTip()
-                                           .setTitle("Hey!")
-                                           .setDescription("I'm the top fellow")
-                                           .setGravity(Gravity.RIGHT)
-                                      )
-                           .setOverlay(new Overlay()
-                                           .setEnterAnimation(enterAnimation)
-                                           .setExitAnimation(exitAnimation)
-                                      );
+                .setPointer(new Pointer())
+                .setToolTip(new ToolTip()
+                                .setDescription("I'm the top fellow")
+                                .setGravity(Gravity.RIGHT)
+                )
+                .setOverlay(new Overlay()
+                        .setEnterAnimation(enterAnimation)
+                        .setExitAnimation(exitAnimation));
 
         /* setup 1st button, when clicked, cleanUp() and re-run TourGuide on button2 */
-        button.setOnClickListener(new View.OnClickListener(){
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mTutorialHandler.cleanUp();
-                mTutorialHandler.setToolTip(new ToolTip().setTitle("Hey there!").setDescription("Just the middle man").setGravity(Gravity.BOTTOM|Gravity.LEFT)).playOn(button2);
-                           }
+                mTutorialHandler.setToolTip(new ToolTip().setDescription("Just the middle man").setGravity(Gravity.BOTTOM | Gravity.LEFT)).playOn(button2);
+            }
         });
 
         /* setup 2nd button, when clicked, cleanUp() and re-run TourGuide on button3 */
-        button2.setOnClickListener(new View.OnClickListener(){
+        button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mTutorialHandler.cleanUp();
-                mTutorialHandler.setToolTip(new ToolTip().setTitle("Hey...").setDescription("It's time to say goodbye").setGravity(Gravity.TOP|Gravity.RIGHT)).playOn(button3);
+                mTutorialHandler.setToolTip(new ToolTip().setDescription("It's time to say goodbye").setGravity(Gravity.TOP | Gravity.RIGHT)).playOn(button3);
             }
         });
 
         /* setup 3rd button, when clicked, run cleanUp() */
-        button3.setOnClickListener(new View.OnClickListener(){
+        button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mTutorialHandler.cleanUp();

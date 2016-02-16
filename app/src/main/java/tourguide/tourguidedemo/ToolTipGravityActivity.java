@@ -46,7 +46,7 @@ public class ToolTipGravityActivity extends ActionBarActivity {
         Button button = (Button)findViewById(R.id.button);
 
         ToolTip toolTip = new ToolTip().
-                setTitle("Welcome!").
+
                 setDescription("Click on Get Started to begin...").
                 setBackgroundColor(Color.parseColor("#2980b9")).
                 setTextColor(Color.parseColor("#FFFFFF")).

@@ -47,7 +47,7 @@ public class ToolTipMeasureTestActivity extends ActionBarActivity {
         Button button = (Button)findViewById(R.id.button);
 
         ToolTip toolTip = new ToolTip().
-                setTitle("Welcome!").
+
                 setDescription("This is a really really long title....This is a really really long title....This is a really really long title....This is a really really long title....This is a really really long title....This is a really really long title....This is a really really long title....").
                 setBackgroundColor(Color.parseColor("#2980b9")).
                 setTextColor(Color.parseColor("#FFFFFF")).

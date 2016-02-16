@@ -42,7 +42,7 @@ You can add the tutorial pointer on top of it by:
 
     TourGuide mTourGuideHandler = TourGuide.init(this).with(TourGuide.Technique.Click)
                 .setPointer(new Pointer())
-                .setToolTip(new ToolTip().setTitle("Welcome!").setDescription("Click on Get Started to begin..."))
+                .setToolTip(new ToolTip()
                 .setOverlay(new Overlay())
                 .playOn(button);
 
@@ -65,7 +65,7 @@ Tooltip is the box of text that gives further explanation of a UI element. In th
         animation.setInterpolator(new BounceInterpolator());
 
         ToolTip toolTip = new ToolTip()
-                            .setTitle("Next Button")
+
                             .setDescription("Click on Next button to proceed...")
                             .setTextColor(Color.parseColor("#bdc3c7"))
                             .setBackgroundColor(Color.parseColor("#e74c3c"))

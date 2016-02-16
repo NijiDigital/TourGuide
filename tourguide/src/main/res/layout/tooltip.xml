@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
 
-    <!--<View-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="5dp"-->
-        <!--android:background="@drawable/shadow_upward" />-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:orientation="horizontal">
 
-    <LinearLayout
-        android:id="@+id/toolTip_container"
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/left_image_view"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="#e74c3c"
-        android:orientation="vertical"
+        android:scaleType="centerInside"
+        android:visibility="visible"
+        tools:src="@drawable/ic_launcher1"/>
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/right_image_view"
+        android:layout_toRightOf="@+id/left_image_view"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
         android:gravity="center"
-        android:padding="10dp">
+        android:textColor="@color/Red"
+        android:textSize="16sp"
+        tools:text="Description sur deux lignes\nT'es content hein"/>
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Default Title"
-            android:textColor="@color/White"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Default Description"
-            android:textColor="@color/White" />
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/right_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerInside"
+        android:visibility="visible"
+        tools:src="@drawable/ic_launcher1"/>
 
 </LinearLayout>

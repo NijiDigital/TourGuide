@@ -35,7 +35,6 @@ public class MemoryLeakTestActivity extends ActionBarActivity {
         mTutorialHandler = TourGuide.init(this).with(TourGuide.Technique.Click)
                 .setPointer(new Pointer())
                 .setToolTip(new ToolTip()
-                            .setTitle("Hey!")
                             .setDescription("Let's hope that there's no memory leak..."))
                 .setOverlay(new Overlay())
                 .playOn(button);
