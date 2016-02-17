@@ -9,7 +9,6 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
-import android.support.v4.view.MotionEventCompat;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -208,21 +207,6 @@ public class FrameLayoutWithHole extends FrameLayout {
                 sb.append(";");
         }
         sb.append("]");
-    }
-
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
-        //first check if the location button should handle the touch event
-        dumpEvent(ev);
-        int action = MotionEventCompat.getActionMasked(ev);
-        if (mViewHole != null) {
-            int[] pos = new int[2];
-            mViewHole.getLocationOnScreen(pos);
-            if (ev.getRawY() >= pos[1] && ev.getRawY() <= (pos[1] + mViewHole.getHeight()) && ev.getRawX() >= pos[0] && ev.getRawX() <= (pos[0] + mViewHole.getWidth())) { //location button event
-                return false;
-            }
-        }
-        return super.dispatchTouchEvent(ev);
     }
 
     @Override
