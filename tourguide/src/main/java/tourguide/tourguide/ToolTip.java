@@ -2,9 +2,7 @@ package tourguide.tourguide;
 
 import android.view.Gravity;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.BounceInterpolator;
 
 /**
  * Created by tanjunrong on 6/17/15.
@@ -18,10 +16,6 @@ public class ToolTip {
 
     public ToolTip(View tooltipView) {
         mTooltipView = tooltipView;
-        mEnterAnimation = new AlphaAnimation(0f, 1f);
-        mEnterAnimation.setDuration(400);
-        mEnterAnimation.setFillAfter(true);
-        mEnterAnimation.setInterpolator(new BounceInterpolator());
         mShadow = true;
         mGravity = Gravity.CENTER;
     }

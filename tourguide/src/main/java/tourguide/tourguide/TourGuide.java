@@ -288,7 +288,9 @@ public class TourGuide {
             /* inflate and get views */
             ViewGroup parent = (ViewGroup) mActivity.getWindow().getDecorView();
             mToolTipViewGroup = mToolTip.mTooltipView;
-            mToolTipViewGroup.startAnimation(mToolTip.mEnterAnimation);
+            if (mToolTip.mEnterAnimation != null) {
+                mToolTipViewGroup.startAnimation(mToolTip.mEnterAnimation);
+            }
             /* position and size calculation */
             int[] pos = new int[2];
             mHighlightedView.getLocationOnScreen(pos);
@@ -617,7 +619,7 @@ public class TourGuide {
             final ValueAnimator fadeOutAnim2 = ObjectAnimator.ofFloat(view, "alpha", 1f, 0f);
             fadeOutAnim2.setDuration(fadeOutDuration);
             view.setAlpha(0);
-            animatorSet.setStartDelay(mToolTip != null ? mToolTip.mEnterAnimation.getDuration() : 0);
+            animatorSet.setStartDelay(mToolTip != null && mToolTip.mEnterAnimation != null ? mToolTip.mEnterAnimation.getDuration() : 0);
             animatorSet.play(fadeInAnim);
             animatorSet.play(scaleDownX).with(scaleDownY).after(fadeInAnim);
             animatorSet.play(scaleUpX).with(scaleUpY).with(fadeOutAnim).after(scaleDownY);
