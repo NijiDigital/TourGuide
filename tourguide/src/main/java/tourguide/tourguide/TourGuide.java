@@ -128,14 +128,25 @@ public class TourGuide {
     }
 
     /**
-     * Clean up the tutorial that is added to the activity
+     * Clean  the tutorial that is added to the activity
      */
-    public void cleanUp() {
+
+    public void cleanAll() {
+        cleanUp();
+        mSequence = null;
+        mOverlay = null;
+        mToolTip = null;
+        mPointer = null;
+    }
+
+    private void cleanUp() {
         if (mFrameLayout != null) {
             mFrameLayout.cleanUp();
-            if (mToolTipViewGroup != null) {
-                ((ViewGroup) mActivity.getWindow().getDecorView()).removeView(mToolTipViewGroup);
-            }
+            mFrameLayout = null;
+        }
+        if (mToolTipViewGroup != null) {
+            ((ViewGroup) mActivity.getWindow().getDecorView()).removeView(mToolTipViewGroup);
+            mToolTipViewGroup = null;
         }
     }
 
@@ -166,10 +177,7 @@ public class TourGuide {
     }
 
     public TourGuide next() {
-        if (mFrameLayout != null) {
-            cleanUp();
-        }
-
+        cleanUp();
         if (mSequence.mCurrentSequence < mSequence.mTourGuideArray.length) {
             setToolTip(mSequence.getToolTip());
             setPointer(mSequence.getPointer());
