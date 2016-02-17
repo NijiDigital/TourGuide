@@ -7,17 +7,13 @@ import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.Point;
-import android.graphics.Typeface;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import net.i2p.android.ext.floatingactionbutton.FloatingActionButton;
 
@@ -232,7 +228,6 @@ public class TourGuide {
     }
 
     private void setupView() {
-//        TODO: throw exception if either mActivity, mDuration, mHighlightedView is null
         checking();
         final ViewTreeObserver viewTreeObserver = mHighlightedView.getViewTreeObserver();
         viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -259,8 +254,11 @@ public class TourGuide {
     }
 
     private void checking() {
-        // There is not check for tooltip because tooltip can be null, it means there no tooltip will be shown
-
+        if (mToolTip != null) {
+            if (mToolTip.mTooltipView == null) {
+                throw new IllegalStateException("Tooltip should provide a layout");
+            }
+        }
     }
 
     private void handleDisableClicking(FrameLayoutWithHole frameLayoutWithHole) {
@@ -288,40 +286,8 @@ public class TourGuide {
         if (mToolTip != null) {
             /* inflate and get views */
             ViewGroup parent = (ViewGroup) mActivity.getWindow().getDecorView();
-            LayoutInflater layoutInflater = mActivity.getLayoutInflater();
-            mToolTipViewGroup = layoutInflater.inflate(R.layout.tooltip, null);
-            TextView descriptionView = (TextView) mToolTipViewGroup.findViewById(R.id.description);
-            ImageView leftImageView = (ImageView) mToolTipViewGroup.findViewById(R.id.left_image_view);
-            ImageView rightImageView = (ImageView) mToolTipViewGroup.findViewById(R.id.right_image_view);
-
-            mToolTipViewGroup.setBackgroundResource(mToolTip.mBackgroundColor);
-
-            if (mToolTip.mDescription == 0) {
-                descriptionView.setVisibility(View.GONE);
-            } else {
-                descriptionView.setVisibility(View.VISIBLE);
-                descriptionView.setText(mToolTip.mDescription);
-                descriptionView.setTextColor(mActivity.getResources().getColor(mToolTip.mTextColor));
-            }
+            mToolTipViewGroup = mToolTip.mTooltipView;
             mToolTipViewGroup.startAnimation(mToolTip.mEnterAnimation);
-            if (mToolTip.mRightDrawableRes != 0) {
-                rightImageView.setVisibility(View.VISIBLE);
-                rightImageView.setImageResource(mToolTip.mRightDrawableRes);
-            } else {
-                rightImageView.setVisibility(View.GONE);
-            }
-
-            if (mToolTip.mLeftDrawableRes != 0) {
-                leftImageView.setVisibility(View.VISIBLE);
-                leftImageView.setImageResource(mToolTip.mLeftDrawableRes);
-            } else {
-                leftImageView.setVisibility(View.GONE);
-            }
-
-            if (mToolTip.mTypeface != null) {
-                final Typeface typeface = Typeface.createFromAsset(mActivity.getAssets(), mToolTip.mTypeface);
-                descriptionView.setTypeface(typeface);
-            }
             /* position and size calculation */
             int[] pos = new int[2];
             mHighlightedView.getLocationOnScreen(pos);
