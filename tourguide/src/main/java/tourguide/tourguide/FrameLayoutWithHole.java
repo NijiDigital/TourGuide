@@ -13,12 +13,12 @@ import android.support.v4.view.MotionEventCompat;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.widget.FrameLayout;
+
 import java.util.ArrayList;
 
 /**
@@ -269,7 +269,7 @@ public class FrameLayoutWithHole extends FrameLayout {
         mEraserBitmap.eraseColor(Color.TRANSPARENT);
 
         if (mOverlay!=null) {
-            mEraserCanvas.drawColor(mOverlay.mBackgroundColor);
+            mEraserCanvas.drawColor(getResources().getColor(mOverlay.mBackgroundColor));
             int padding = (int) (10 * mDensity);
             if (mOverlay.mStyle == Overlay.Style.Rectangle) {
                 mEraserCanvas.drawRect(mPos[0] - padding, mPos[1] - padding, mPos[0] + mViewHole.getWidth() + padding, mPos[1] + mViewHole.getHeight() + padding, mEraser);
