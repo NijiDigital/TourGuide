@@ -15,6 +15,7 @@ public class Overlay {
     public Animation mEnterAnimation, mExitAnimation;
     public View.OnClickListener mOnClickListener;
     public int mHoleRadius = NOT_SET;
+    public int mHolePadding = 0;
     public final static int NOT_SET = -1;
 
     public enum Style {
@@ -39,6 +40,17 @@ public class Overlay {
      */
     public Overlay setBackgroundColor(@ColorRes int backgroundColor) {
         mBackgroundColor = backgroundColor;
+        return this;
+    }
+
+    /**
+     * Set hole padding
+     *
+     * @param backgroundColor
+     * @return return {@link Overlay} instance for chaining purpose
+     */
+    public Overlay setHolePadding(int holePadding) {
+        mHolePadding = holePadding;
         return this;
     }
 

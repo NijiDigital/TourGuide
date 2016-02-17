@@ -131,9 +131,11 @@ public class TourGuide {
      * Clean up the tutorial that is added to the activity
      */
     public void cleanUp() {
-        mFrameLayout.cleanUp();
-        if (mToolTipViewGroup != null) {
-            ((ViewGroup) mActivity.getWindow().getDecorView()).removeView(mToolTipViewGroup);
+        if (mFrameLayout != null) {
+            mFrameLayout.cleanUp();
+            if (mToolTipViewGroup != null) {
+                ((ViewGroup) mActivity.getWindow().getDecorView()).removeView(mToolTipViewGroup);
+            }
         }
     }
 
@@ -268,6 +270,7 @@ public class TourGuide {
         }
         // 2. if overlay listener is not provided, check if it's disabled
         else if (mOverlay != null && mOverlay.mDisableClick) {
+            frameLayoutWithHole.setHolePadding(mOverlay.mHolePadding);
             frameLayoutWithHole.setViewHole(mHighlightedView);
             frameLayoutWithHole.setSoundEffectsEnabled(false);
             frameLayoutWithHole.setOnClickListener(new View.OnClickListener() {

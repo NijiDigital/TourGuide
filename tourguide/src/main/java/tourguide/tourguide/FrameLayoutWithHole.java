@@ -37,12 +37,17 @@ public class FrameLayoutWithHole extends FrameLayout {
     private int[] mPos;
     private float mDensity;
     private Overlay mOverlay;
+    private int mHolePadding;
 
     private ArrayList<AnimatorSet> mAnimatorSetArrayList;
 
     public void setViewHole(View viewHole) {
         this.mViewHole = viewHole;
         enforceMotionType();
+    }
+
+    public void setHolePadding(int padding) {
+        mHolePadding = padding;
     }
 
     public void addAnimatorSet(AnimatorSet animatorSet) {
@@ -88,26 +93,17 @@ public class FrameLayoutWithHole extends FrameLayout {
         mViewHole.getLocationOnScreen(pos);
         mPos = pos;
 
-        mDensity = context.getResources().getDisplayMetrics().density;
-        int padding = (int) (20 * mDensity);
-
         if (mViewHole.getHeight() > mViewHole.getWidth()) {
-            mRadius = mViewHole.getHeight() / 2 + padding;
+            mRadius = mViewHole.getHeight() / 2 + mHolePadding;
         } else {
-            mRadius = mViewHole.getWidth() / 2 + padding;
+            mRadius = mViewHole.getWidth() / 2 + mHolePadding;
         }
         mMotionType = motionType;
     }
 
     private void init(AttributeSet attrs, int defStyle) {
-        // Load attributes
-//        final TypedArray a = getContext().obtainStyledAttributes(
-//                attrs, FrameLayoutWithHole, defStyle, 0);
-//
-//
-//        a.recycle();
         setWillNotDraw(false);
-        // Set up a default TextPaint object
+
         mTextPaint = new TextPaint();
         mTextPaint.setFlags(Paint.ANTI_ALIAS_FLAG);
         mTextPaint.setTextAlign(Paint.Align.LEFT);
