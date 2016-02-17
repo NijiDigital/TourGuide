@@ -192,7 +192,7 @@ public class Sequence {
                 }
 
                 if (!pass) {
-                    throw new IllegalArgumentException("ContinueMethod.OverlayListener is chosen as the ContinueMethod, but no Default Overlay Listener is set, or not all Overlay.mListener is set for all the TourGuide passed in.");
+                    throw new IllegalArgumentException("ContinuLogeMethod.OverlayListener is chosen as the ContinueMethod, but no Default Overlay Listener is set, or not all Overlay.mListener is set for all the TourGuide passed in.");
                 }
             } else if (continueMethod == ContinueMethod.Overlay) {
                 // when Overlay ContinueMethod is used, listener must not be supplied (to avoid unexpected result)
