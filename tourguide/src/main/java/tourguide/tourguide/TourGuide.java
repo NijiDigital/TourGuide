@@ -231,11 +231,10 @@ public class TourGuide {
     private void setupView() {
         checking();
         final ViewTreeObserver viewTreeObserver = mHighlightedView.getViewTreeObserver();
-        viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+        viewTreeObserver.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
             @Override
-            public void onGlobalLayout() {
-                // make sure this only run once
-                mHighlightedView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+            public boolean onPreDraw() {
+                mHighlightedView.getViewTreeObserver().removeOnPreDrawListener(this);
 
                 /* Initialize a frame layout with a hole */
                 mFrameLayout = new FrameLayoutWithHole(mActivity, mHighlightedView, mMotionType, mOverlay);
@@ -250,6 +249,7 @@ public class TourGuide {
                 setupFrameLayout();
                 /* setup tooltip view */
                 setupToolTip();
+                return false;
             }
         });
     }
@@ -306,16 +306,10 @@ public class TourGuide {
             final float adjustment = 15 * density; //adjustment is that little overlapping area of tooltip and targeted button
 
             // calculate x position, based on gravity, tooltipMeasuredWidth, parent max width, x position of target view, adjustment
-            if (toolTipMeasuredWidth > parent.getWidth()) {
-                resultPoint.x = getXForTooTip(mToolTip.mGravity, parent.getWidth(), targetViewX, adjustment);
-            } else {
-                resultPoint.x = getXForTooTip(mToolTip.mGravity, toolTipMeasuredWidth, targetViewX, adjustment);
-            }
-
+            resultPoint.x = getXForTooTip(mToolTip.mGravity, toolTipMeasuredWidth, targetViewX, adjustment, parent.getWidth());
             resultPoint.y = getYForTooTip(mToolTip.mGravity, toolTipMeasuredHeight, targetViewY, adjustment);
 
             // add view to parent
-//            ((ViewGroup) mActivity.getWindow().getDecorView().findViewById(android.R.id.content)).addView(mToolTipViewGroup, layoutParams);
             parent.addView(mToolTipViewGroup, layoutParams);
 
             // 1. width < screen check
@@ -363,12 +357,12 @@ public class TourGuide {
 
     }
 
-    private int getXForTooTip(int gravity, int toolTipMeasuredWidth, int targetViewX, float adjustment) {
+    private int getXForTooTip(int gravity, int toolTipMeasuredWidth, int targetViewX, float adjustment, int maxValue) {
         int x;
         if ((gravity & Gravity.LEFT) == Gravity.LEFT) {
-            x = targetViewX - toolTipMeasuredWidth + (int) adjustment;
+            x = Math.max(0, targetViewX - toolTipMeasuredWidth) + (int) adjustment;
         } else if ((gravity & Gravity.RIGHT) == Gravity.RIGHT) {
-            x = targetViewX + mHighlightedView.getWidth() - (int) adjustment;
+            x = Math.min(maxValue - toolTipMeasuredWidth, targetViewX + mHighlightedView.getWidth()) - (int) adjustment;
         } else {
             x = targetViewX + mHighlightedView.getWidth() / 2 - toolTipMeasuredWidth / 2;
         }
@@ -435,7 +429,6 @@ public class TourGuide {
         contentArea.getLocationOnScreen(pos);
         // frameLayoutWithHole's coordinates are calculated taking full screen height into account
         // but we're adding it to the content area only, so we need to offset it to the same Y value of contentArea
-
         layoutParams.setMargins(0, -pos[1], 0, 0);
         contentArea.addView(mFrameLayout, layoutParams);
     }

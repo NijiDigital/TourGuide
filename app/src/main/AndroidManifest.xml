@@ -1,71 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="tourguide.tourguidedemo" >
+<manifest
+    package="fr.ganfra.test.tourguide"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
-        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/tour_guide_icon"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
-        <activity
-            android:name=".ToolbarActivity"
-            android:label="Toolbar Activity"
-            android:theme="@style/AppThemeNoActionBar" />
-        <activity
-            android:name=".BasicActivity"
-            android:label="Basic Activity" />
-        <activity
-            android:name=".ToolTipGravityActivity"
-            android:label="Tooltip Gravity Activity" />
-        <activity
-            android:name=".ToolTipCustomizationActivity"
-            android:label="ToolTip Customization Activity" />
-        <activity
-            android:name=".OverlayCustomizationActivity"
-            android:label="Overlay Customization Activity" />
-        <activity
-            android:name=".MultipleToolTipActivity"
-            android:label="Multiple Tooltip Activity" />
-        <activity
-            android:name=".NoPointerActivity"
-            android:label="NoPointer Activity" />
-        <activity
-            android:name=".NoPointerNoToolTipActivity"
-            android:label="Overlay Only Activity" />
-        <activity
-            android:name=".NoOverlayActivity"
-            android:label="No Overlay Activity" />
-        <activity
-            android:name=".ManualSequenceActivity"
-            android:label="Manual Sequence Activity" />
-        <activity
-            android:name=".OverlaySequenceTourActivity"
-            android:label="Overlay Activity (using Sequence Class)" />
-        <activity
-            android:name=".MemoryLeakTestActivity"
-            android:label="Memory Leak Test Activity" />
+        android:theme="@style/AppTheme">
 
         <activity
-            android:name=".TourGuideDemoMain"
-            android:label="Tour Guide Demo" >
+            android:name="fr.ganfra.test.OverlaySequenceTourActivity"
+            android:label="Tour Guide Demo">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        <!-- Test Activity -->
-        <activity
-            android:name="tourguide.instrumentation.test.ToolTipMeasureTestActivity"
-            android:label="ToolTip Measure Test Activity" />
-        <activity
-            android:name="tourguide.instrumentation.test.SequenceOverlayCMTestActivity"
-            android:label="Sequence Overlay Continue Method Test Activity" />
-        <activity
-            android:name="tourguide.instrumentation.test.SequenceTestActivity"
-            android:label="Sequence Test Activity" />
     </application>
 
 </manifest>

@@ -1,6 +1,5 @@
 package tourguide.tourguide;
 
-import android.graphics.Color;
 import android.support.annotation.ColorRes;
 import android.view.View;
 import android.view.animation.Animation;
@@ -23,7 +22,7 @@ public class Overlay {
     }
 
     public Overlay() {
-        this(true, Color.parseColor("#55000000"), Style.Circle);
+        this(true, android.R.color.transparent, Style.Circle);
     }
 
     public Overlay(boolean disableClick, int backgroundColor, Style style) {
@@ -46,7 +45,7 @@ public class Overlay {
     /**
      * Set hole padding
      *
-     * @param backgroundColor
+     * @param holePadding
      * @return return {@link Overlay} instance for chaining purpose
      */
     public Overlay setHolePadding(int holePadding) {
