@@ -1,5 +1,6 @@
 package tourguide.tourguide;
 
+import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
 import android.view.Gravity;
@@ -14,7 +15,8 @@ import android.view.animation.BounceInterpolator;
 public class ToolTip {
     @StringRes public int mDescription;
     @DrawableRes public int mLeftDrawableRes, mRightDrawableRes;
-    @DrawableRes public int mBackgroundColor, mTextColor;
+    @DrawableRes public int mBackgroundColor;
+    @ColorRes public int mTextColor;
     public String mTypeface;
     public Animation mEnterAnimation, mExitAnimation;
     public boolean mShadow;

@@ -301,6 +301,7 @@ public class TourGuide {
             } else {
                 descriptionView.setVisibility(View.VISIBLE);
                 descriptionView.setText(mToolTip.mDescription);
+                descriptionView.setTextColor(mActivity.getResources().getColor(mToolTip.mTextColor));
             }
             mToolTipViewGroup.startAnimation(mToolTip.mEnterAnimation);
             if (mToolTip.mRightDrawableRes != 0) {
