@@ -295,6 +295,7 @@ public class TourGuide {
         if (mToolTip != null) {
             /* inflate and get views */
             ViewGroup parent = (ViewGroup) mActivity.getWindow().getDecorView();
+            parent.setClipChildren(false);
             mToolTipViewGroup = mToolTip.mTooltipView;
             if (mToolTip.mEnterAnimation != null) {
                 mToolTipViewGroup.startAnimation(mToolTip.mEnterAnimation);
