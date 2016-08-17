@@ -20,6 +20,7 @@ import net.i2p.android.ext.floatingactionbutton.FloatingActionButton;
  * Created by tanjunrong on 2/10/15.
  */
 public class TourGuide {
+
     /**
      * This describes the animation techniques
      */
@@ -43,6 +44,7 @@ public class TourGuide {
     public ToolTip mToolTip;
     public Pointer mPointer;
     public Overlay mOverlay;
+    private ViewTreeObserver.OnGlobalLayoutListener mGlobalLayoutListener;
 
     private Sequence mSequence;
 
@@ -145,6 +147,10 @@ public class TourGuide {
             mFrameLayout = null;
         }
         if (mToolTipViewGroup != null) {
+            if (mGlobalLayoutListener != null) {
+                mToolTipViewGroup.getViewTreeObserver().removeOnGlobalLayoutListener(mGlobalLayoutListener);
+                mGlobalLayoutListener = null;
+            }
             ((ViewGroup) mActivity.getWindow().getDecorView()).removeView(mToolTipViewGroup);
             mToolTipViewGroup = null;
         }
@@ -348,7 +354,7 @@ public class TourGuide {
             // this needs an viewTreeObserver, that's because TextView measurement of it's vertical height is not accurate (didn't take into account of multiple lines yet) before it's rendered
             // re-calculate height again once it's rendered
             final ViewTreeObserver viewTreeObserver = mToolTipViewGroup.getViewTreeObserver();
-            viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            mGlobalLayoutListener = new ViewTreeObserver.OnGlobalLayoutListener() {
                 @Override
                 public void onGlobalLayout() {
                     mToolTipViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);// make sure this only run once
@@ -358,7 +364,8 @@ public class TourGuide {
                     fixedY = getYForTooTip(mToolTip.mGravity, toolTipHeightAfterLayouted, targetViewY, adjustment);
                     layoutParams.setMargins((int) mToolTipViewGroup.getX(), fixedY, 0, 0);
                 }
-            });
+            };
+            viewTreeObserver.addOnGlobalLayoutListener(mGlobalLayoutListener);
 
             // set the position using setMargins on the left and top
             layoutParams.setMargins(resultPoint.x, resultPoint.y, 0, 0);
